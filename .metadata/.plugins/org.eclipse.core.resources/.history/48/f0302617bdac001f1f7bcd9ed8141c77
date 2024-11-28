@@ -1,0 +1,70 @@
+package camada_dados;
+
+import entidades.DiscenteDTO;
+import entidades.PedidoIntencaoDTO;
+import entidades.EmpresaDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class DataGatewayEmLinhas implements IDataGatewayEmLinhas {
+    // Dados Mockados
+    private final List<DiscenteDTO> discentes = new ArrayList<>();
+    private final List<PedidoIntencaoDTO> pedidos = new ArrayList<>();
+    private final List<EmpresaDTO> empresas = new ArrayList<>();
+
+    public DataGatewayEmLinhas() {
+        // Mock de Discentes
+        discentes.add(new DiscenteDTO(1, "João Silva", "20220001", "8.5", "300"));
+        discentes.add(new DiscenteDTO(2, "Maria Oliveira", "20220002", "7.9", "280"));
+
+        // Mock de Empresas
+        empresas.add(new EmpresaDTO(1, "Tech Solutions", "Rua A, 123", "12345678000100"));
+        empresas.add(new EmpresaDTO(2, "SoftDev Corp", "Av. Central, 45", "98765432000100"));
+    }
+
+
+    public DiscenteDTO buscarDiscentePorId(String NomeDiscente) {
+        for (DiscenteDTO discente : discentes) {
+            if (discente.getNome() == NomeDiscente) {
+                return discente; // Encontrado
+            }
+        }
+        return null; 
+    }
+
+    public EmpresaDTO buscarEmpresaPorId(String Nomeempresa) {
+        for (EmpresaDTO empresa : empresas) {
+            if (empresa.getNome() == Nomeempresa) {
+                return empresa; // Encontrado
+            }
+        }
+        return null; // Não encontrado
+    }
+
+    public List<PedidoIntencaoDTO> buscarPedidosPorDiscente(String NomeDiscente) {
+        List<PedidoIntencaoDTO> pedidosDoDiscente = new ArrayList<>();
+        for (PedidoIntencaoDTO pedido : pedidos) {
+            if (pedido.getUsuario() == NomeDiscente) {
+                pedidosDoDiscente.add(pedido);
+            }
+        }
+        return pedidosDoDiscente;
+    }
+
+    public boolean salvarPedidoIntencao(PedidoIntencaoDTO pedido) {
+        // Validar Discente e Empresa no mesmo método
+        DiscenteDTO discente = buscarDiscentePorId(pedido.getUsuario());
+        EmpresaDTO empresa = buscarEmpresaPorId(pedido.getNomeEmpresa());
+
+        if (discente == null || empresa == null) {
+            System.out.println("Erro: Discente ou Empresa não encontrados!");
+            return false;
+        }
+
+        // Salvar Pedido
+        pedidos.add(pedido);
+        System.out.println("Pedido de Intenção salvo com sucesso!");
+        return true;
+    }
+}

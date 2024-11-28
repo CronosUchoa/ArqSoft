@@ -1,0 +1,33 @@
+1732449245974	Rename resource 'padrao_comando'
+1732449317693	Rename resource 'Service.java'
+1732449357150	Rename resource 'PedidoIntencaoService .java'
+1732449707241	Rename resource 'EmpresaDTO'
+1732450130560	Rename resource 'ControladorPedidoIntencao.java'
+1732450207381	Rename resource 'IControladorPedidoIntencao.java'
+1732450874218	Delete element
+1732454151974	Delete element
+1732454501033	Move 'camada_dominio' to 'classes'
+1732454918849	Move 'camada_dominio' to 'java'
+1732455019792	Move 'camada_dados' to 'java'
+1732455030708	Move 'entidades' to 'java'
+1732456473353	Rename resource 'PedidoIntencao.java'
+1732456685059	Delete element
+1732457935328	Delete element
+1732458167000	Rename resource 'Command.java'
+1732599016177	Delete element
+1732602882175	Delete element
+1732603426918	Encapsulate field 'usuario, ...'
+1732603450564	Encapsulate field 'ira, ...'
+1732603459655	Encapsulate field 'cargaHorariaCumprida, ...'
+1732603464991	Encapsulate field 'enderecoResidencia, ...'
+1732603471125	Encapsulate field 'nomeEmpresa, ...'
+1732603478123	Encapsulate field 'enderecoEmpresa, ...'
+1732603484249	Encapsulate field 'modalidadeEstagio, ...'
+1732603490006	Encapsulate field 'cargaHorariaSemanal, ...'
+1732603496008	Encapsulate field 'valorBolsa, ...'
+1732603505001	Encapsulate field 'resumoAtividades, ...'
+1732603511800	Encapsulate field 'conteudosTeoricos, ...'
+1732603516304	Encapsulate field 'motivo, ...'
+1732672594975	Delete element
+1732672919349	Rename type 'ServeltController'
+1732705215600	Copy file

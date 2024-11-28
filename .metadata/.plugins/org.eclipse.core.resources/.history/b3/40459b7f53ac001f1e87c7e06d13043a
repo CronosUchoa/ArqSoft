@@ -1,0 +1,94 @@
+package camada_dominio.camada_servico;
+
+
+import java.util.List;
+
+//import camada_dados.CamadaDadosMock;
+import camada_dados.ICamadaDadosMock;
+//import entidades.DiscenteDTO;
+import entidades.PedidoIntencaoDTO;
+//import entidades.EmpresaDTO;
+
+public class PedidoIntencaoService implements IPedidoIntencaoService{
+    private final ICamadaDadosMock dados;
+
+    public PedidoIntencaoService(ICamadaDadosMock dados) {
+        this.dados = dados;
+    }
+
+    public boolean criarPedidoIntencao(PedidoIntencaoDTO pedido) {
+
+        // Verificar se há outro pedido de intenção em andamento
+   
+
+        boolean validacao = ValidarPedidoIntencao(pedido);
+    	   
+        if(validacao) {
+        	dados.salvarPedidoIntencao(pedido);
+            System.out.println("Pedido de intenção salvo com sucesso!");
+            return true;
+        }
+        return false;
+    	   
+       
+
+    
+   
+  
+       
+    }
+    
+	 // Exemplo de pseudo-código
+	    public boolean verificarPedidoEmAndamento(String usuario) {
+	        List<PedidoIntencaoDTO> pedidosExistentes = dados.buscarPedidosPorDiscente(usuario);
+	        return !pedidosExistentes.isEmpty();
+	    }
+	    public boolean ValidarPedidoIntencao(PedidoIntencaoDTO pedido) {
+	        // O(a) discente tem que ter cumprido 80 (oitenta) créditos dentre as disciplinas obrigatórias.(RN1)
+	    	if(pedido.getCargaHorariaCumprida() < 80) {
+	    		  System.out.println("Sem o minimo de horas cumprida!");
+	              return false;
+	    	}
+    	
+    	 //O(a) discente tem que ter o Índice de Rendimento Acadêmico (IRA) maior ou igual a 6,0
+        // (seis) ou IRA dos dois últimos períodos maiores
+        // ou iguais a 7,0 (sete). (RN2)
+        if ((pedido.getIra() < 6 && pedido.getIraUlt() == false) || (pedido.getIra() < 7 && pedido.getIraUlt() == true)) {
+            System.out.println("IRA muito baixo!");
+            return false;
+        } 
+        
+       // O Estágio Supervisionado deverá ter carga horária
+       // máxima de 30 (trinta) horas por semana. (RN3)
+        if(pedido.getCargaHorariaSemanal() > 30) {
+        	System.out.println("carga horária máxima é 30!");  
+        	return false;
+        }
+        
+        return true;
+    }
+	@Override
+	public PedidoIntencaoDTO buscarPedidoIntencaoPorId(int idPedido) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PedidoIntencaoDTO> buscarPedidosPorDiscente(int idDiscente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void excluirPedidoIntencao(int idPedido) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarPedidoIntencao(PedidoIntencaoDTO pedidoIntencao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

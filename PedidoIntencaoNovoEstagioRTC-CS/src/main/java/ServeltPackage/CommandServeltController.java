@@ -1,0 +1,55 @@
+package ServeltPackage;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import camada_dominio.CriarPedidoIntencaoCommand;
+import camada_dominio.ICriarPedidoIntencaoCommand;
+
+/**
+ * Servlet implementation class ServeltController
+ */
+@WebServlet("/Controller")
+public class CommandServeltController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CommandServeltController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	
+//Esse seria o Command Responsavel por controlar os demais commandos.
+	 @Override
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        String action = request.getParameter("action");
+	        ICriarPedidoIntencaoCommand criarPedidoIntencaoCommand;
+
+	        switch (action) {
+	            case "criarPedidoIntencao":
+	            	criarPedidoIntencaoCommand = new CriarPedidoIntencaoCommand();
+	            	criarPedidoIntencaoCommand.execute(request, response);
+	                break;
+	            // adicionaria outros comandos aqui deletar, listar etc
+	            default:
+	                throw new ServletException("Ação inválida: " + action);
+	        }
+
+	       
+	    }
+}

@@ -1,0 +1,41 @@
+package servico;
+
+import camada_dados.CamadaDadosInterface;
+import entidades.DiscenteDTO;
+import entidades.PedidoIntencaoDTO;
+
+public class PedidoIntencaoService {
+    private final CamadaDadosInterface dados;
+
+    public PedidoIntencaoService(CamadaDadosInterface dados) {
+        this.dados = dados;
+    }
+
+    public boolean criarPedidoIntencao(PedidoIntencao pedido) {
+        Discente discente = dados.buscarDiscentePorId(pedido.getIdDiscente());
+
+        // Verificar se o Discente existe
+        if (discente == null) {
+            System.out.println("Discente não encontrado!");
+            return false;
+        }
+
+        // Outras validações...
+
+        // Salvar o pedido
+        dados.salvarPedidoIntencao(pedido);
+        System.out.println("Pedido de intenção salvo com sucesso!");
+        return true;
+    }
+
+
+    // Método auxiliar para validar números
+    private boolean isNumeroValido(String numero) {
+        try {
+            Double.parseDouble(numero);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}

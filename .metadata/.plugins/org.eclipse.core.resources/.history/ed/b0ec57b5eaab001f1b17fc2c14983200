@@ -1,0 +1,64 @@
+package camada_dominio;
+
+import java.io.IOException;
+
+//import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import camada_dados.CamadaDadosMock;
+import camada_dados.ICamadaDadosMock;
+import camada_dominio.camada_servico.IPedidoIntencaoService;
+import camada_dominio.camada_servico.PedidoIntencaoService;
+import entidades.PedidoIntencaoDTO;
+
+public class CriarPedidoIntencaoCommand implements ICriarPedidoIntencaoCommand {
+
+    private final IPedidoIntencaoService pedidoService;
+    private final ICamadaDadosMock camadaDadosMock;
+
+    public CriarPedidoIntencaoCommand() {
+    	this.camadaDadosMock = new CamadaDadosMock(); // Crie uma implementação válida
+    	this.pedidoService = new PedidoIntencaoService(camadaDadosMock);
+
+       // this.pedidoService = new PedidoIntencaoService(null);
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. Identificar usuário
+      // String usuario = (String) request.getSession().getAttribute("usuario");
+     /*  String usuario =  request.getParameter("usuario");
+        if (usuario == null) {
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/JSPS/login.jsp");
+    		dispatcher.forward(request, response);
+            return;
+        }*/
+
+        // 2. Receber os dados do formulário
+       PedidoIntencaoDTO pedido = new PedidoIntencaoDTO(
+    		    request.getParameter("usuario"),
+    		    Integer.parseInt(request.getParameter("ira")),
+    		    Integer.parseInt(request.getParameter("cargaHorariaCumprida")),
+                request.getParameter("enderecoResidencia"),
+                request.getParameter("nomeEmpresa"),
+                request.getParameter("enderecoEmpresa"),
+                request.getParameter("modalidadeEstagio"),
+                Integer.parseInt(request.getParameter("cargaHorariaSemanal")),
+                Integer.parseInt(request.getParameter("valorBolsa")),
+                request.getParameter("resumoAtividades"),
+                request.getParameter("conteudosTeoricos"),
+                request.getParameter("motivo")
+        );
+
+       //Validar o pedido
+       
+        // 4. Criar Pedido
+        pedidoService.criarPedidoIntencao(pedido);
+
+        // 5. Redirecionar para confirmação
+        //response.sendRedirect("confirmacao.jsp");
+    }
+    
+}

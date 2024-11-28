@@ -1,0 +1,18 @@
+package camada_dominio.camada_servico;
+
+public class IPedidoIntencaoService {
+	   // Método para criar um novo pedido de intenção
+    void criarPedidoIntencao(PedidoIntencaoDTO pedidoIntencao);
+
+    // Método para buscar um pedido de intenção pelo ID
+    PedidoIntencaoDTO buscarPedidoIntencaoPorId(int idPedido);
+
+    // Método para buscar todos os pedidos de intenção de um discente
+    List<PedidoIntencaoDTO> buscarPedidosPorDiscente(int idDiscente);
+
+    // Método para excluir um pedido de intenção
+    void excluirPedidoIntencao(int idPedido);
+
+    // Método para atualizar um pedido de intenção
+    void atualizarPedidoIntencao(PedidoIntencaoDTO pedidoIntencao);
+}

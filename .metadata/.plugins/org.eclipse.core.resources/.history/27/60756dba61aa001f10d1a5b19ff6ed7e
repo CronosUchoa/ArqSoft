@@ -1,0 +1,19 @@
+@WebServlet("/controller")
+public class ControllerServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        Command command;
+
+        switch (action) {
+            case "criarPedidoIntencao":
+                command = new CriarPedidoIntencaoCommand();
+                break;
+            // Adicione outros comandos aqui
+            default:
+                throw new ServletException("Ação inválida: " + action);
+        }
+
+        command.execute(request, response);
+    }
+}

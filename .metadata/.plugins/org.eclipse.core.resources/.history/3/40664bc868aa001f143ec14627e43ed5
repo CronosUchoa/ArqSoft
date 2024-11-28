@@ -1,0 +1,58 @@
+package servico;
+
+import camada_dados.CamadaDadosInterface;
+import entidades.DiscenteDTO;
+import entidades.PedidoIntencaoDTO;
+
+public class PedidoIntencaoService {
+    private final CamadaDadosInterface dados;
+
+    public PedidoIntencaoService(CamadaDadosInterface dados) {
+        this.dados = dados;
+    }
+
+    public boolean criarPedidoIntencao(PedidoIntencaoDTO pedido) {
+        // Buscar o Discente no mock
+        DiscenteDTO discente = dados.buscarDiscentePorId(pedido.getIdDiscente());
+
+        // Verificar se o Discente existe
+        if (discente == null) {
+            System.out.println("Discente não encontrado!");
+            return false;
+        }
+
+        // Verificar se há outro pedido de intenção em andamento
+        if (!dados.buscarPedidosPorDiscente(discente.getId()).isEmpty()) {
+            System.out.println("Já existe um pedido de intenção em andamento.");
+            return false;
+        }
+
+        // Verificar se o IRA é válido (RN1)
+        if (!isNumeroValido(discente.getIra()) || Double.parseDouble(discente.getIra()) < 0) {
+            System.out.println("IRA inválido!");
+            return false;
+        }
+
+        // Verificar a carga horária obrigatória cumprida (RN2)
+        if (!isNumeroValido(discente.getCargaHorariaObrigatoriaCumprida())
+                || Integer.parseInt(discente.getCargaHorariaObrigatoriaCumprida()) < 0) {
+            System.out.println("Carga horária inválida!");
+            return false;
+        }
+
+        // Caso passe em todas as validações, salvar o pedido
+        dados.salvarPedidoIntencao(pedido);
+        System.out.println("Pedido de intenção salvo com sucesso!");
+        return true;
+    }
+
+    // Método auxiliar para validar números
+    private boolean isNumeroValido(String numero) {
+        try {
+            Double.parseDouble(numero);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}

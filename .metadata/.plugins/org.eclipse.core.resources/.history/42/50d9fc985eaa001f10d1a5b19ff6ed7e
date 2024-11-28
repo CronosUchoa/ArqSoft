@@ -1,0 +1,4 @@
+public interface IPedidoIntencaoService {
+    boolean validarPedido(PedidoIntencao pedido);
+    void criarPedido(PedidoIntencao pedido);
+}

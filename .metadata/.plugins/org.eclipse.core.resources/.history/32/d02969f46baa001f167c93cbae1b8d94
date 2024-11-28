@@ -1,0 +1,16 @@
+public class PedidoIntencao {
+    private String usuario;
+    private String ira;
+    private String cargaHorariaCumprida;
+    private String enderecoResidencia;
+    private String nomeEmpresa;
+    private String enderecoEmpresa;
+    private String modalidadeEstagio;
+    private String cargaHorariaSemanal;
+    private String valorBolsa;
+    private String resumoAtividades;
+    private String conteudosTeoricos;
+    private String motivo;
+
+    // Construtor, Getters e Setters
+}

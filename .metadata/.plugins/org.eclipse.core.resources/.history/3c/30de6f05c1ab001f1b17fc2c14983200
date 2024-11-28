@@ -1,0 +1,43 @@
+package entidades;
+
+public class PedidoIntencaoDTO {
+    private int id;
+    private int idDiscente;
+    private String descricao;
+
+    public PedidoIntencaoDTO(int id, int idDiscente, String descricao) {
+        this.id = id;
+        this.idDiscente = idDiscente;
+        this.descricao = descricao;
+    }
+
+    public PedidoIntencaoDTO(String usuario, String parameter, String parameter2, String parameter3, String parameter4,
+			String parameter5, String parameter6, String parameter7, String parameter8, String parameter9,
+			String parameter10, String parameter11) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdDiscente() {
+        return idDiscente;
+    }
+
+    public void setIdDiscente(int idDiscente) {
+        this.idDiscente = idDiscente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+}

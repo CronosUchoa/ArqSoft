@@ -1,0 +1,23 @@
+package entidades;
+
+public class PedidoIntencaoVO {
+    public PedidoIntencaoVO(String usuario2, String parameter, String parameter2, String parameter3, String parameter4,
+			String parameter5, String parameter6, String parameter7, String parameter8, String parameter9,
+			String parameter10, String parameter11) {
+		// TODO Auto-generated constructor stub
+	}
+	private String usuario;
+    private String ira;
+    private String cargaHorariaCumprida;
+    private String enderecoResidencia;
+    private String nomeEmpresa;
+    private String enderecoEmpresa;
+    private String modalidadeEstagio;
+    private String cargaHorariaSemanal;
+    private String valorBolsa;
+    private String resumoAtividades;
+    private String conteudosTeoricos;
+    private String motivo;
+
+    // Construtor, Getters e Setters
+}

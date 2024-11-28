@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\Gabri\Desktop\Faculdade\Arquitetura\WORKSPACE\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1950031184.index
+3383641172.index
+4151348950.index
+2485825939.index
+3657842572.index
+1969331568.index
+3415907572.index

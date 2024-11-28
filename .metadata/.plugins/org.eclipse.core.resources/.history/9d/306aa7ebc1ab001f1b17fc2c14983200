@@ -1,0 +1,117 @@
+package entidades;
+
+public class PedidoIntencaoDTO {
+    private int id;
+    private int idDiscente;
+    private String descricao;
+    
+    private String usuario;
+    private int ira;
+    private int cargaHorariaCumprida;
+    private String enderecoResidencia;
+    private String nomeEmpresa;
+    private String enderecoEmpresa;
+    private String modalidadeEstagio;
+    private int cargaHorariaSemanal;
+    private int valorBolsa;
+    private String resumoAtividades;
+    private String conteudosTeoricos;
+    private String motivo;
+    
+
+    public PedidoIntencaoDTO(int id, int idDiscente, String descricao) {
+        this.id = id;
+        this.idDiscente = idDiscente;
+        this.descricao = descricao;
+    }
+
+    public PedidoIntencaoDTO(String usuario, int ira, int cargaHorariaCumprida, String enderecoResidencia, String nomeEmpresa,
+			String enderecoEmpresa, String modalidadeEstagio, int cargaHorariaSemanal, int valorBolsa, String resumoAtividades,
+			String conteudosTeoricos, String motivo) {
+		this.setUsuario(usuario);
+		this.setIra(ira);
+		this.setCargaHorariaCumprida(cargaHorariaCumprida);
+		this.setEnderecoResidencia(enderecoResidencia);
+		this.setNomeEmpresa(nomeEmpresa);
+		this.setEnderecoEmpresa(enderecoEmpresa);
+		this.modalidadeEstagio = modalidadeEstagio;
+		this.cargaHorariaSemanal = cargaHorariaSemanal;
+		this.valorBolsa = valorBolsa;
+		this.resumoAtividades = resumoAtividades;
+		this.conteudosTeoricos = conteudosTeoricos;
+		this.motivo = motivo;
+		
+	}
+
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdDiscente() {
+        return idDiscente;
+    }
+
+    public void setIdDiscente(int idDiscente) {
+        this.idDiscente = idDiscente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public int getIra() {
+		return ira;
+	}
+
+	public void setIra(int ira) {
+		this.ira = ira;
+	}
+
+	public int getCargaHorariaCumprida() {
+		return cargaHorariaCumprida;
+	}
+
+	public void setCargaHorariaCumprida(int cargaHorariaCumprida) {
+		this.cargaHorariaCumprida = cargaHorariaCumprida;
+	}
+
+	public String getEnderecoResidencia() {
+		return enderecoResidencia;
+	}
+
+	public void setEnderecoResidencia(String enderecoResidencia) {
+		this.enderecoResidencia = enderecoResidencia;
+	}
+
+	public String getNomeEmpresa() {
+		return nomeEmpresa;
+	}
+
+	public void setNomeEmpresa(String nomeEmpresa) {
+		this.nomeEmpresa = nomeEmpresa;
+	}
+
+	public String getEnderecoEmpresa() {
+		return enderecoEmpresa;
+	}
+
+	public void setEnderecoEmpresa(String enderecoEmpresa) {
+		this.enderecoEmpresa = enderecoEmpresa;
+	}
+}

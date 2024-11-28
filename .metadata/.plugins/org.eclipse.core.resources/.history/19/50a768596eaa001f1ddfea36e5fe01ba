@@ -1,0 +1,15 @@
+<form action="Controller" method="post">
+    <input type="hidden" name="action" value="criarPedidoIntencao">
+    IRA3: <input type="text" name="ira"><br>
+    Carga Horária Cumprida: <input type="text" name="cargaHorariaCumprida"><br>
+    Endereço de Residência: <input type="text" name="enderecoResidencia"><br>
+    Nome da Empresa: <input type="text" name="nomeEmpresa"><br>
+    Endereço da Empresa: <input type="text" name="enderecoEmpresa"><br>
+    Modalidade do Estágio: <input type="text" name="modalidadeEstagio"><br>
+    Carga Horária Semanal: <input type="text" name="cargaHorariaSemanal"><br>
+    Valor da Bolsa: <input type="text" name="valorBolsa"><br>
+    Resumo das Atividades: <textarea name="resumoAtividades"></textarea><br>
+    Conteúdos Teóricos: <textarea name="conteudosTeoricos"></textarea><br>
+    Motivo: <textarea name="motivo"></textarea><br>
+    <button type="submit">Enviar Pedido</button>
+</form>

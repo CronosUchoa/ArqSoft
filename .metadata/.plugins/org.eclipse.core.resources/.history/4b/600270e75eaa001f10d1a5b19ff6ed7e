@@ -1,0 +1,39 @@
+public class PedidoIntencaoService implements IPedidoIntencaoService {
+
+
+	    private final DiscenteRepositoryMock discenteRepository;
+	    private final PedidoIntencaoRepositoryMock pedidoRepository;
+
+	    public PedidoIntencaoServiceImpl() {
+	        this.discenteRepository = new DiscenteRepositoryMock();
+	        this.pedidoRepository = new PedidoIntencaoRepositoryMock();
+	    }
+
+	    @Override
+	    public boolean validarPedido(PedidoIntencao pedido) {
+	        Discente discente = discenteRepository.buscarPorId(pedido.getIdDiscente());
+	        if (discente == null) {
+	            return false;
+	        }
+
+	        // Aplicar outras validações...
+	        return true;
+	    }
+
+	    @Override
+	    public void criarPedido(PedidoIntencao pedido) {
+	        pedidoRepository.adicionar(pedido);
+	    }
+	
+
+
+    // Método auxiliar para validar números
+    private boolean isNumeroValido(String numero) {
+        try {
+            Double.parseDouble(numero);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}

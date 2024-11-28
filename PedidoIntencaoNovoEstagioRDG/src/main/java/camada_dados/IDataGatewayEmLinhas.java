@@ -1,0 +1,15 @@
+package camada_dados;
+
+import java.util.List;
+
+import entidades.DiscenteDTO;
+import entidades.EmpresaDTO;
+import entidades.PedidoIntencaoDTO;
+
+public interface IDataGatewayEmLinhas {
+    public DiscenteDTO buscarDiscentePorId(String NomeDiscente);
+    public EmpresaDTO buscarEmpresaPorId(String Nomeempresa) ;
+    public List<PedidoIntencaoDTO> buscarPedidosPorDiscente(String NomeDiscente);
+    public boolean salvarPedidoIntencao(PedidoIntencaoDTO pedido);
+}
+    

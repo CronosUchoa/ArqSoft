@@ -1,0 +1,68 @@
+package camada_dominio;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import camada_dominio.camada_servico.IPedidoIntencaoService;
+import camada_dominio.camada_servico.PedidoIntencaoService;
+import entidades.PedidoIntencaoDTO;
+
+public class CriarPedidoIntencaoCommand implements ICriarPedidoIntencaoCommand {
+
+    private final IPedidoIntencaoService pedidoService;
+
+    public CriarPedidoIntencaoCommand() {
+        this.pedidoService = new PedidoIntencaoService(null);
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. Identificar usuário
+       /* String usuario = (String) request.getSession().getAttribute("usuario");
+        if (usuario == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }*/
+
+        // 2. Receber os dados do formulário
+       /* PedidoIntencaoDTO pedido = new PedidoIntencaoDTO(
+                usuario,
+                request.getParameter("ira"),
+                request.getParameter("cargaHorariaCumprida"),
+                request.getParameter("enderecoResidencia"),
+                request.getParameter("nomeEmpresa"),
+                request.getParameter("enderecoEmpresa"),
+                request.getParameter("modalidadeEstagio"),
+                request.getParameter("cargaHorariaSemanal"),
+                request.getParameter("valorBolsa"),
+                request.getParameter("resumoAtividades"),
+                request.getParameter("conteudosTeoricos"),
+                request.getParameter("motivo")
+        );*/
+        PedidoIntencaoDTO pedido = new PedidoIntencaoDTO(
+                "joao",
+                request.getParameter("ira"),
+                request.getParameter("cargaHorariaCumprida"),
+                request.getParameter("enderecoResidencia"),
+                request.getParameter("nomeEmpresa"),
+                request.getParameter("enderecoEmpresa"),
+                request.getParameter("modalidadeEstagio"),
+                request.getParameter("cargaHorariaSemanal"),
+                request.getParameter("valorBolsa"),
+                request.getParameter("resumoAtividades"),
+                request.getParameter("conteudosTeoricos"),
+                request.getParameter("motivo")
+        );
+
+
+        // 4. Criar Pedido
+        pedidoService.criarPedidoIntencao(pedido);
+
+        // 5. Redirecionar para confirmação
+        response.sendRedirect("confirmacao.jsp");
+    }
+    
+}

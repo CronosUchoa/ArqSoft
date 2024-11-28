@@ -1,0 +1,48 @@
+public class PedidoIntencaoService implements IPedidoIntencaoService {
+
+    private final PedidoIntencaoDAO pedidoDAO;
+
+    public PedidoIntencaoService() {
+        this.pedidoDAO = new PedidoIntencaoDAO();
+    }
+
+    @Override
+    public boolean validarPedido(PedidoIntencao pedido) {
+        // Validação RN1: Verificar IRA válido
+        if (pedido.getIra() == null || pedido.getIra().isEmpty() || !isNumeroValido(pedido.getIra())) {
+            return false;
+        }
+
+        // Validação RN2: Verificar carga horária cumprida
+        if (pedido.getCargaHorariaCumprida() == null || !isNumeroValido(pedido.getCargaHorariaCumprida())) {
+            return false;
+        }
+
+        // Validação RN3: Nome da empresa não pode ser vazio
+        if (pedido.getNomeEmpresa() == null || pedido.getNomeEmpresa().isEmpty()) {
+            return false;
+        }
+
+        // Validação RN9: Motivo é obrigatório
+        if (pedido.getMotivo() == null || pedido.getMotivo().isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void criarPedido(PedidoIntencao pedido) {
+        pedidoDAO.salvar(pedido);
+    }
+
+    // Método auxiliar para validar números
+    private boolean isNumeroValido(String numero) {
+        try {
+            Double.parseDouble(numero);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+}

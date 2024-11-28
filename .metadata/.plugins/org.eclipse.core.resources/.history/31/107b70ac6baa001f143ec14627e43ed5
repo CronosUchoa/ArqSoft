@@ -1,0 +1,59 @@
+package camada_dominio;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import camada_dominio.camada_servico.IPedidoIntencaoService;
+import camada_dominio.camada_servico.PedidoIntencaoService;
+
+public class CriarPedidoIntencaoCommand implements Command {
+
+    private final IPedidoIntencaoService pedidoService;
+
+    public CriarPedidoIntencaoCommand() {
+        this.pedidoService = new PedidoIntencaoService(null);
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. Identificar usuário
+        String usuario = (String) request.getSession().getAttribute("usuario");
+        if (usuario == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        // 2. Receber os dados do formulário
+        PedidoIntencao pedido = new PedidoIntencao(
+                usuario,
+                request.getParameter("ira"),
+                request.getParameter("cargaHorariaCumprida"),
+                request.getParameter("enderecoResidencia"),
+                request.getParameter("nomeEmpresa"),
+                request.getParameter("enderecoEmpresa"),
+                request.getParameter("modalidadeEstagio"),
+                request.getParameter("cargaHorariaSemanal"),
+                request.getParameter("valorBolsa"),
+                request.getParameter("resumoAtividades"),
+                request.getParameter("conteudosTeoricos"),
+                request.getParameter("motivo")
+        );
+
+        // 3. Validar Regras
+        if (!pedidoService.validarPedido(pedido)) {
+            request.setAttribute("erro", "Dados inválidos ou regras de negócio não atendidas.");
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
+            return;
+        }
+
+        // 4. Criar Pedido
+        pedidoService.criarPedido(pedido);
+
+        // 5. Redirecionar para confirmação
+        response.sendRedirect("confirmacao.jsp");
+    }
+
+}

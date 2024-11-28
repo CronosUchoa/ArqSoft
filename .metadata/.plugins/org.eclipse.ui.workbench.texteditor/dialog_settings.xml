@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="   &lt;h1&gt;Pedido de Intenção de Estágio&lt;/h1&gt;"/>
+		<list key="findhistory">
+			<item value="   &lt;h1&gt;Pedido de Intenção de Estágio&lt;/h1&gt;"/>
+			<item value="&#x0D;&#x0A;@WebServlet(&quot;/controller&quot;)&#x0D;&#x0A;public class ControllerServlet extends HttpServlet {&#x0D;&#x0A;    @Override&#x0D;&#x0A;    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {&#x0D;&#x0A;        String action = request.getParameter(&quot;action&quot;);&#x0D;&#x0A;        Command command;&#x0D;&#x0A;&#x0D;&#x0A;        switch (action) {&#x0D;&#x0A;            case &quot;criarPedidoIntencao&quot;:&#x0D;&#x0A;                command = new CriarPedidoIntencaoCommand();&#x0D;&#x0A;                break;&#x0D;&#x0A;            // Adicione outros comandos aqui&#x0D;&#x0A;            default:&#x0D;&#x0A;                throw new ServletException(&quot;Ação inválida: &quot; + action);&#x0D;&#x0A;        }&#x0D;&#x0A;&#x0D;&#x0A;        command.execute(request, response);&#x0D;&#x0A;    }&#x0D;&#x0A;}&#x0D;&#x0A;"/>
+		</list>
+	</section>
+</section>

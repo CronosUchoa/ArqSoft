@@ -1,0 +1,37 @@
+package entidades;
+
+public class PedidoIntencaoDTO {
+    private int id;
+    private int idDiscente;
+    private String descricao;
+
+    public PedidoIntencaoDTO(int id, int idDiscente, String descricao) {
+        this.id = id;
+        this.idDiscente = idDiscente;
+        this.descricao = descricao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdDiscente() {
+        return idDiscente;
+    }
+
+    public void setIdDiscente(int idDiscente) {
+        this.idDiscente = idDiscente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+}

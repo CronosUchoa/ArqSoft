@@ -1,0 +1,86 @@
+package camada_dominio.camada_servico;
+
+
+import java.util.List;
+
+//import camada_dados.CamadaDadosMock;
+import camada_dados.ICamadaDadosMock;
+import entidades.DiscenteDTO;
+import entidades.PedidoIntencaoDTO;
+//import entidades.EmpresaDTO;
+
+public class PedidoIntencaoService implements IPedidoIntencaoService{
+    private final ICamadaDadosMock dados;
+
+    public PedidoIntencaoService(ICamadaDadosMock dados) {
+        this.dados = dados;
+    }
+
+    public boolean criarPedidoIntencao(PedidoIntencaoDTO pedido) {
+        // Buscar o Discente no mock
+        DiscenteDTO discente = dados.buscarDiscentePorId(pedido.getUsuario());
+
+        /* Verificar se o Discente existe*/
+      /*if (discente == null) {
+            System.out.println("Discente não encontrado!");
+            return false;
+        }*/
+
+        // Verificar se há outro pedido de intenção em andamento
+       /* if (!dados.buscarPedidosPorDiscente(discente.getId()).isEmpty()) {
+            System.out.println("Já existe um pedido de intenção em andamento.");
+            return false;
+        }*/
+
+       
+    	   
+    	   dados.salvarPedidoIntencao(pedido);
+           System.out.println("Pedido de intenção salvo com sucesso!");
+           return true;
+       
+
+        // Verificar a carga horária obrigatória cumprida (RN2)
+      /*  if (!isNumeroValido(discente.getCargaHorariaObrigatoriaCumprida())
+                || Integer.parseInt(discente.getCargaHorariaObrigatoriaCumprida()) < 0) {
+            System.out.println("Carga horária inválida!");
+            return false;
+        }*/
+
+        // Caso passe em todas as validações, salvar o pedido
+       
+    }
+    public boolean ValidarPedidoIntencao(PedidoIntencaoDTO pedido) {
+    	 //O(a) discente tem que ter o Índice de Rendimento Acadêmico (IRA) maior ou igual a 6,0
+        // (seis) ou IRA dos dois últimos períodos maiores
+        // ou iguais a 7,0 (sete). (RN2)
+        if ((pedido.getIra() < 6 && pedido.getIraUlt() == false) || (pedido.getIra() < 7 && pedido.getIraUlt() == true)) {
+            System.out.println("IRA inválido!");
+            return false;
+        }  	
+        return true;
+    }
+	@Override
+	public PedidoIntencaoDTO buscarPedidoIntencaoPorId(int idPedido) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PedidoIntencaoDTO> buscarPedidosPorDiscente(int idDiscente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void excluirPedidoIntencao(int idPedido) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atualizarPedidoIntencao(PedidoIntencaoDTO pedidoIntencao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+package entidades;
+
+public class PedidoIntencaoDTO {
+
+    private String usuario;
+
+    public PedidoIntencaoDTO(String usuario, String ira, String cargaHorariaCumprida, String enderecoResidencia, String nomeEmpresa,
+			String enderecoEmpresa, String modalidadeEstagio, String cargaHorariaSemanal, String valorBolsa, String resumoAtividades,
+			String conteudosTeoricos, String motivo) {
+		this.us
+	}
+
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdDiscente() {
+        return idDiscente;
+    }
+
+    public void setIdDiscente(int idDiscente) {
+        this.idDiscente = idDiscente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="camada_dados.CamadaDadosMock"/>
+    <fullyQualifiedTypeName name="entidades.EmpresaDTO"/>
+    <fullyQualifiedTypeName name="entidades.PedidoIntencaoDTO"/>
+    <fullyQualifiedTypeName name="entidades.PedidoIntencaoVO"/>
+</qualifiedTypeNameHistroy>
